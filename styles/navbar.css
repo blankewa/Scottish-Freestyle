@@ -1,0 +1,46 @@
+/* Navbar stylesheet */
+
+.navbar {
+    background-color: royalblue;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: royalblue;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.navbar ul li {
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li.logo {
+    margin-left: auto;
+    background-color: grey;
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    background-color: darkblue;
+}
+
+.navbar ul li a.active {
+    background-color: black;
+}
