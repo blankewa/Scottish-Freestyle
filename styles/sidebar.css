@@ -6,6 +6,7 @@ ul {
   padding: 0;
   width: 200px;
   background-color: #e5e5e5;
+  left: 0;
 }
 
 li a {
