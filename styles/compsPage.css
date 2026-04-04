@@ -5,3 +5,9 @@
     margin-top: 50px;
     font-family:Arial, Helvetica, sans-serif;
 }
+
+.comp-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
