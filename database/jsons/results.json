@@ -1,0 +1,11 @@
+[
+    {
+        "competitionID": 1,
+        "eventType": "Big Air",
+        "ageCategory": "Adults",
+        "gender": "Open",
+        "first": "John",
+        "second": "Jane",
+        "third": "Smith"
+    }
+]

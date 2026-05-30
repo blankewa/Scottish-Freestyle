@@ -1,6 +1,7 @@
 #Database code used to generate and run databases
 
 import sqlite3
+import json
 
 #connect to db
 def connectDb():
@@ -29,4 +30,16 @@ def createTables(database, connection):
     createCompetitionTable(database, connection)
     print("Tables Created / Tables Already Exist")
 
-
+#read JSONS
+def readComppetitionJSON(database, connection):
+    with open("./jsons/competition.json", "r") as data:
+        competitions = json.load(data)
+        for competition in competitions:
+            database.execute(f"SELECT EXISTS(SELECT 1 FROM competitions WHERE userID={competition['competitionID']})")
+            if database.fetchone()[0] == 0:
+                database.execute(f"INSERT INTO competition (competitionID, name, organiser, location, bigAir, railEvent, slopeStyle) VALUES ('{competition["competitionID"]}', '{competition["name"]}', '{competition["organiser"]}', '{competition["location"]}', '{competition["bigAir"]}', '{competition["railEvent"]}', '{competition["slopeStyle"]}')")
+                print("Compeition inserted")
+            else:
+                print(f"Compeition with ID {competition['competitionID']} already exists")
+    connection.commit()
+    print("loaded competition data")   
