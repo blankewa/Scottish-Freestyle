@@ -2,8 +2,6 @@
 
 Github Repository for Scottish Freestyle Website
 
-Created to stop me from cleaning
-
 ## Libraries used
 
 ### [Bootstrap V5.3](https://github.com/twbs/bootstrap/tree/v5.3.8)
