@@ -31,11 +31,11 @@ def createTables(database, connection):
     print("Tables Created / Tables Already Exist")
 
 #read JSONS
-def readComppetitionJSON(database, connection):
+def readCompetitionJSON(database, connection):
     with open("./jsons/competition.json", "r") as data:
         competitions = json.load(data)
         for competition in competitions:
-            database.execute(f"SELECT EXISTS(SELECT 1 FROM competitions WHERE userID={competition['competitionID']})")
+            database.execute(f"SELECT EXISTS(SELECT 1 FROM competition WHERE competitionID={competition['competitionID']})")
             if database.fetchone()[0] == 0:
                 database.execute(f"INSERT INTO competition (competitionID, name, organiser, location, bigAir, railEvent, slopeStyle) VALUES ('{competition["competitionID"]}', '{competition["name"]}', '{competition["organiser"]}', '{competition["location"]}', '{competition["bigAir"]}', '{competition["railEvent"]}', '{competition["slopeStyle"]}')")
                 print("Compeition inserted")
@@ -43,3 +43,16 @@ def readComppetitionJSON(database, connection):
                 print(f"Compeition with ID {competition['competitionID']} already exists")
     connection.commit()
     print("loaded competition data")   
+
+def readResultsJSON(database, connection):
+    with open("./jsons/results.json", "r") as data:
+        results = json.load(data)
+        for result in results:
+            database.execute(f"SELECT EXISTS(SELECT 1 FROM results WHERE competitionID={result['competitionID']})")
+            if database.fetchone()[0] == 0:
+                database.execute(f"INSERT INTO results (competitionID, event, ageCategory, genderCategory, first, second, third) VALUES ('{result['competitionID']}', '{result['eventType']}', '{result['ageCategory']}', '{result['genderCategory']}', '{result['first']}', '{result['second']}', '{result['third']}')")
+                print("Result inserted")
+            else:
+                print(f"Result with ID {result['competitionID']} already exists")
+    connection.commit()
+    print("loaded results data")
