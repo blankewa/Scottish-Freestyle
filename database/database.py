@@ -56,3 +56,31 @@ def readResultsJSON(database, connection):
                 print(f"Result with ID {result['competitionID']} already exists")
     connection.commit()
     print("loaded results data")
+
+def loadData(database, connection):
+    readCompetitionJSON(database, connection)
+    readResultsJSON(database, connection)
+
+#display all data in db
+def displayData(database):
+    database.execute("SELECT * FROM competition")
+    print("Competition Data:")
+    for row in database.fetchall():
+        print(row)
+    database.execute("SELECT * FROM results")
+    print("Results Data:")
+    for row in database.fetchall():
+        print(row)
+
+
+
+connectionObject = connectDb()
+if connectionObject == None:
+    print("unable to connect to database")
+    exit(-1)
+
+database, connection = connectionObject
+
+createTables(database, connection)
+
+loadData(database, connection)
