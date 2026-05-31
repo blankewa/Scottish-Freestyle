@@ -84,3 +84,5 @@ database, connection = connectionObject
 createTables(database, connection)
 
 loadData(database, connection)
+
+displayData(database)
