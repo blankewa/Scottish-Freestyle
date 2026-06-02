@@ -72,8 +72,12 @@ def displayData(database):
     for row in database.fetchall():
         print(row)
 
-
-
+#force delete all data in db (USED IN COMMAND LINE ONLY)
+def deleteAllData(database, connection):
+    database.execute("DROP TABLE IF EXISTS competition")
+    database.execute("DROP TABLE IF EXISTS results")
+    connection.commit()
+    
 connectionObject = connectDb()
 if connectionObject == None:
     print("unable to connect to database")

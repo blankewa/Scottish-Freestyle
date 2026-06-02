@@ -2,6 +2,10 @@
 
 Github Repository for Scottish Freestyle Website
 
+## Contributers 
+
+Ewan McMahon - @blankewa
+
 ## Libraries used
 
 ### [Bootstrap V5.3](https://github.com/twbs/bootstrap/tree/v5.3.8)

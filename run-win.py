@@ -1,4 +1,5 @@
 #run this file to run on localhost
+#http://127.0.0.1:3000
 
 import sys
 import os
